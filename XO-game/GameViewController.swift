@@ -21,6 +21,8 @@ class GameViewController: UIViewController {
     // MARK: - Private properties
 
     private let gameboard = Gameboard()
+    
+    private lazy var referee = Referee(gameboard: gameboard)
     private var currentState: GameState! {
         didSet {
             currentState.begin()
@@ -60,6 +62,11 @@ class GameViewController: UIViewController {
     }
 
     private func setNextState() {
+        if let winner = referee.determineWinner() {
+            currentState = GameEndedState(winner: winner, gameViewController: self)
+            return
+        }
+
         if let playerInputState = currentState as? PlayerInputState {
             currentState = PlayerInputState(player: playerInputState.player.next,
                                             gameViewController: self,
