@@ -50,7 +50,9 @@ class GameViewController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction func restartButtonTapped(_ sender: UIButton) { }
+    @IBAction func restartButtonTapped(_ sender: UIButton) {
+        log(.gameRestart)
+    }
 
     // MARK: - Private functions
 
