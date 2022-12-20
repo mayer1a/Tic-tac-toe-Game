@@ -58,7 +58,8 @@ class GameViewController: UIViewController {
         currentState = PlayerInputState(player: .first,
                                         gameViewController: self,
                                         gameboard: gameboard,
-                                        gameboardView: gameboardView)
+                                        gameboardView: gameboardView,
+                                        markViewPrototype: Player.first.markViewPrototype)
     }
 
     private func setNextState() {
@@ -71,7 +72,8 @@ class GameViewController: UIViewController {
             currentState = PlayerInputState(player: playerInputState.player.next,
                                             gameViewController: self,
                                             gameboard: gameboard,
-                                            gameboardView: gameboardView)
+                                            gameboardView: gameboardView,
+                                            markViewPrototype: playerInputState.player.next.markViewPrototype)
         }
     }
 }

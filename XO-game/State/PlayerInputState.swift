@@ -18,18 +18,21 @@ final class PlayerInputState: GameState {
     private(set) weak var gameboardView: GameboardView?
 
     let player: Player
+    let markViewPrototype: MarkView
 
     // MARK: - Constructions
 
     init(player: Player,
          gameViewController: GameViewController,
          gameboard: Gameboard,
-         gameboardView: GameboardView?)
+         gameboardView: GameboardView?,
+         markViewPrototype: MarkView)
     {
         self.player = player
         self.gameViewController = gameViewController
         self.gameboard = gameboard
         self.gameboardView = gameboardView
+        self.markViewPrototype = markViewPrototype
     }
 
     // MARK: - Functions
@@ -55,17 +58,8 @@ final class PlayerInputState: GameState {
             return
         }
 
-        let markView: MarkView
-
-        switch player {
-        case .first:
-            markView = XView()
-        case .second:
-            markView = OView()
-        }
-
         gameboard?.setPlayer(player, at: position)
-        gameboardView.placeMarkView(markView, at: position)
+        gameboardView.placeMarkView(markViewPrototype.copy(), at: position)
 
         isCompleted = true
     }
