@@ -18,6 +18,13 @@ final class MainMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.view.subviews.first?.subviews.forEach {
+            let button = $0 as? UIButton
+            button?.layer.cornerRadius = (button?.layer.frame.height ?? 40) / 3
+            button?.layer.borderWidth = 1
+            button?.layer.borderColor = UIColor.systemBlue.cgColor
+        }
     }
 
     @IBAction func playerVersusPlayerButtonTapped(_ sender: UIButton) {
