@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol GameModeProtocol: AnyObject {
+    func setupGameMode(_ isGameWithComputer: Bool)
+}
+
 final class MainMenuViewController: UIViewController {
+
+    weak var delegate: GameModeProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +38,9 @@ final class MainMenuViewController: UIViewController {
         guard let gameViewController = destinationViewController as? GameViewController else { return }
 
         gameViewController.modalPresentationStyle = .fullScreen
-
+        delegate = gameViewController
+        delegate?.setupGameMode(true)
+        
         present(gameViewController, animated: true)
     }
     

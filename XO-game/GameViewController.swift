@@ -18,10 +18,14 @@ class GameViewController: UIViewController {
     @IBOutlet var winnerLabel: UILabel!
     @IBOutlet var restartButton: UIButton!
 
+    // MARK: - Properties
+
+    var isGameWithComputer: Bool = false
+
     // MARK: - Private properties
 
     private let gameboard = Gameboard()
-    
+    private lazy var computerAlgorithm = ComputerAlgorithm(gameboardView: gameboardView)
     private lazy var referee = Referee(gameboard: gameboard)
     private var currentState: GameState! {
         didSet {
@@ -44,8 +48,6 @@ class GameViewController: UIViewController {
 
             if self.currentState.isCompleted {
                 self.setNextState()
-            } else {
-                self.currentState = GameEndedState(winner: self.referee.determineWinner(), gameViewController: self)
             }
         }
     }
@@ -53,6 +55,11 @@ class GameViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func restartButtonTapped(_ sender: UIButton) {
+        gameboard.clear()
+        gameboardView.clear()
+        computerAlgorithm.clear()
+        setFirstState()
+
         log(.gameRestart)
     }
 
@@ -68,10 +75,21 @@ class GameViewController: UIViewController {
 
     private func setNextState() {
         if let winner = referee.determineWinner() {
-            currentState = GameEndedState(winner: winner, gameViewController: self)
+            gameShouldEnded(with: winner)
+            return
+        } else if gameboardView.markViewForPosition.count >= 9 {
+            gameShouldEnded()
             return
         }
 
+        if isGameWithComputer {
+            setNextStateWithComputer()
+        } else {
+            setNextStateWithPlayer()
+        }
+    }
+
+    private func setNextStateWithPlayer() {
         if let playerInputState = currentState as? PlayerInputState {
             currentState = PlayerInputState(player: playerInputState.player.next,
                                             gameViewController: self,
@@ -80,5 +98,43 @@ class GameViewController: UIViewController {
                                             markViewPrototype: playerInputState.player.next.markViewPrototype)
         }
     }
+
+    private func setNextStateWithComputer() {
+        currentState = ComputerInputState(player: .second,
+                                          gameViewController: self,
+                                          gameboard: gameboard,
+                                          gameboardView: gameboardView,
+                                          markViewPrototype: Player.second.markViewPrototype)
+
+        guard
+            let nextPosition = computerAlgorithm.getNextMarkPosition()
+        else {
+            gameShouldEnded(with: referee.determineWinner())
+            return
+        }
+
+        currentState.addMark(at: nextPosition)
+
+        if let winner = referee.determineWinner() {
+            gameShouldEnded(with: winner)
+            return
+        }
+
+        currentState = PlayerInputState(player: .first,
+                                        gameViewController: self,
+                                        gameboard: gameboard,
+                                        gameboardView: gameboardView,
+                                        markViewPrototype: Player.first.markViewPrototype)
+    }
+
+    private func gameShouldEnded(with winner: Player? = nil) {
+        currentState = GameEndedState(winner: winner, gameViewController: self)
+    }
 }
 
+extension GameViewController: GameModeProtocol {
+
+    func setupGameMode(_ isGameWithComputer: Bool) {
+        self.isGameWithComputer = isGameWithComputer
+    }
+}
