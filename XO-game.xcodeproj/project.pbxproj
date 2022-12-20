@@ -15,6 +15,7 @@
 		49AD46802951D5B0008CED28 /* LogCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD467F2951D5B0008CED28 /* LogCommand.swift */; };
 		49AD46822951D664008CED28 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD46812951D664008CED28 /* Logger.swift */; };
 		49AD46842951D6A6008CED28 /* LoggerInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD46832951D6A6008CED28 /* LoggerInvoker.swift */; };
+		49AD46862951E0C1008CED28 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD46852951E0C1008CED28 /* MainMenuViewController.swift */; };
 		F874E4712224621100364CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874E4702224621100364CAE /* AppDelegate.swift */; };
 		F874E4732224621100364CAE /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874E4722224621100364CAE /* GameViewController.swift */; };
 		F874E4762224621100364CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F874E4742224621100364CAE /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		49AD467F2951D5B0008CED28 /* LogCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCommand.swift; sourceTree = "<group>"; };
 		49AD46812951D664008CED28 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		49AD46832951D6A6008CED28 /* LoggerInvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerInvoker.swift; sourceTree = "<group>"; };
+		49AD46852951E0C1008CED28 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		F874E46D2224621100364CAE /* XO-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XO-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F874E4702224621100364CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F874E4722224621100364CAE /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				49AD46712951C265008CED28 /* State */,
 				F874E4702224621100364CAE /* AppDelegate.swift */,
 				F874E4722224621100364CAE /* GameViewController.swift */,
+				49AD46852951E0C1008CED28 /* MainMenuViewController.swift */,
 				F874E4F02225DFF700364CAE /* Referee.swift */,
 				F874E4E62225CB3F00364CAE /* Models */,
 				F874E4E52225CB3100364CAE /* Views */,
@@ -187,6 +190,7 @@
 				TargetAttributes = {
 					F874E46C2224621100364CAE = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = "";
 					};
 				};
 			};
@@ -242,6 +246,7 @@
 				49AD46802951D5B0008CED28 /* LogCommand.swift in Sources */,
 				49AD46822951D664008CED28 /* Logger.swift in Sources */,
 				F874E4E42225CB0700364CAE /* XView.swift in Sources */,
+				49AD46862951E0C1008CED28 /* MainMenuViewController.swift in Sources */,
 				49AD46732951C275008CED28 /* GameState.swift in Sources */,
 				F874E4DB2225C1AC00364CAE /* GameboardView.swift in Sources */,
 				F874E4EF2225DE4500364CAE /* Player.swift in Sources */,
@@ -399,7 +404,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "plasmon.XO-game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -417,7 +422,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "plasmon.XO-game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
