@@ -44,6 +44,8 @@ class GameViewController: UIViewController {
 
             if self.currentState.isCompleted {
                 self.setNextState()
+            } else {
+                self.currentState = GameEndedState(winner: self.referee.determineWinner(), gameViewController: self)
             }
         }
     }

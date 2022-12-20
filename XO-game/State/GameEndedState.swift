@@ -18,7 +18,7 @@ final class GameEndedState: GameState {
 
     // MARK: - Constructions
 
-    init(winner: Player, gameViewController: GameViewController) {
+    init(winner: Player?, gameViewController: GameViewController) {
         self.winner = winner
         self.gameViewController = gameViewController
     }
