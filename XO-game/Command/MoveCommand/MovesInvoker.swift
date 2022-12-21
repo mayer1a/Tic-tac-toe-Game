@@ -28,8 +28,9 @@ final class MovesInvoker {
     }
 
     func executeCommands() {
-        commands.forEach { command in
-            command.execute()
+        for commandNumber in 0..<commands.count / 2 {
+            commands[commandNumber].execute()
+            commands[commandNumber + 5].execute()
         }
 
         commands = []
