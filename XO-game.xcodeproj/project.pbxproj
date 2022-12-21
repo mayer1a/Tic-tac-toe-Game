@@ -18,6 +18,8 @@
 		49AD46862951E0C1008CED28 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD46852951E0C1008CED28 /* MainMenuViewController.swift */; };
 		49AD46882951F611008CED28 /* ComputerInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD46872951F611008CED28 /* ComputerInputState.swift */; };
 		49AD468A2951F856008CED28 /* ComputerAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD46892951F856008CED28 /* ComputerAlgorithm.swift */; };
+		49AD468D2952FA0C008CED28 /* MoveCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD468C2952FA0C008CED28 /* MoveCommand.swift */; };
+		49AD46912952FD93008CED28 /* MovesInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AD46902952FD93008CED28 /* MovesInvoker.swift */; };
 		F874E4712224621100364CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874E4702224621100364CAE /* AppDelegate.swift */; };
 		F874E4732224621100364CAE /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874E4722224621100364CAE /* GameViewController.swift */; };
 		F874E4762224621100364CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F874E4742224621100364CAE /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 		49AD46852951E0C1008CED28 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		49AD46872951F611008CED28 /* ComputerInputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerInputState.swift; sourceTree = "<group>"; };
 		49AD46892951F856008CED28 /* ComputerAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerAlgorithm.swift; sourceTree = "<group>"; };
+		49AD468C2952FA0C008CED28 /* MoveCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCommand.swift; sourceTree = "<group>"; };
+		49AD46902952FD93008CED28 /* MovesInvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovesInvoker.swift; sourceTree = "<group>"; };
 		F874E46D2224621100364CAE /* XO-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XO-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F874E4702224621100364CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F874E4722224621100364CAE /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -89,12 +93,22 @@
 		49AD467C2951D550008CED28 /* Command */ = {
 			isa = PBXGroup;
 			children = (
+				49AD468B2952F9FB008CED28 /* MoveCommand */,
 				49AD467D2951D55F008CED28 /* LogAction.swift */,
 				49AD467F2951D5B0008CED28 /* LogCommand.swift */,
 				49AD46812951D664008CED28 /* Logger.swift */,
 				49AD46832951D6A6008CED28 /* LoggerInvoker.swift */,
 			);
 			path = Command;
+			sourceTree = "<group>";
+		};
+		49AD468B2952F9FB008CED28 /* MoveCommand */ = {
+			isa = PBXGroup;
+			children = (
+				49AD468C2952FA0C008CED28 /* MoveCommand.swift */,
+				49AD46902952FD93008CED28 /* MovesInvoker.swift */,
+			);
+			path = MoveCommand;
 			sourceTree = "<group>";
 		};
 		F874E4642224621100364CAE = {
@@ -241,6 +255,7 @@
 				F874E4732224621100364CAE /* GameViewController.swift in Sources */,
 				F874E4DD2225C25D00364CAE /* GameboardPosition.swift in Sources */,
 				F874E4DF2225C76000364CAE /* MarkView.swift in Sources */,
+				49AD468D2952FA0C008CED28 /* MoveCommand.swift in Sources */,
 				F874E4F12225DFF700364CAE /* Referee.swift in Sources */,
 				F874E4F52225E2CD00364CAE /* Gameboard.swift in Sources */,
 				49AD46882951F611008CED28 /* ComputerInputState.swift in Sources */,
@@ -248,6 +263,7 @@
 				F874E4712224621100364CAE /* AppDelegate.swift in Sources */,
 				F874E4E22225CABF00364CAE /* OView.swift in Sources */,
 				49AD467E2951D55F008CED28 /* LogAction.swift in Sources */,
+				49AD46912952FD93008CED28 /* MovesInvoker.swift in Sources */,
 				F874E4F32225E0B100364CAE /* GameboardSize.swift in Sources */,
 				49AD46842951D6A6008CED28 /* LoggerInvoker.swift in Sources */,
 				49AD468A2951F856008CED28 /* ComputerAlgorithm.swift in Sources */,
