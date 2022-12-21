@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class PlayerAllInoutState: GameState {
+final class PlayerAllInputState: GameState {
 
     // MARK: - Properties
 
@@ -19,6 +19,10 @@ final class PlayerAllInoutState: GameState {
 
     let player: Player
     let markViewPrototype: MarkView
+
+    // MARK: - Private properties
+
+    private var movesCount: Int = 0
 
     // MARK: - Constructions
 
@@ -43,6 +47,7 @@ final class PlayerAllInoutState: GameState {
             gameViewController?.firstPlayerTurnLabel.isHidden = false
             gameViewController?.secondPlayerTurnLabel.isHidden = true
         case .second:
+            gameboardView?.clear()
             gameViewController?.firstPlayerTurnLabel.isHidden = true
             gameViewController?.secondPlayerTurnLabel.isHidden = false
         }
@@ -54,11 +59,11 @@ final class PlayerAllInoutState: GameState {
         let command = MoveCommand(player: player, gameboard: gameboard, position: position, gameboardView: gameboardView)
         MovesInvoker.shared.addMoveCommand(command)
 
-        isCompleted = true
-//        MovesInvoker.shared.onCollectingPlayerMovesNumber = { [weak self] isCompleted in
-//            self?.isCompleted = isCompleted
-//        }
+        if gameboardView?.canPlaceMarkView(at: position) == true {
+            gameboardView?.placeMarkView(player.markViewPrototype, at: position)
+        }
 
-        log(.playerInput(player: player, position: position))
+        movesCount += 1
+        isCompleted = movesCount == 5 ? true : false
     }
 }
