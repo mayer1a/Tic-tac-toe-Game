@@ -62,6 +62,14 @@ public class MarkView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
+    required init(_ prototype: MarkView) {
+        super.init(frame: prototype.frame)
+
+        self.lineColor = prototype.lineColor
+        self.lineWidth = prototype.lineWidth
+        self.textColor = prototype.textColor
+    }
     
     // MARK: - UIView
     
@@ -124,3 +132,7 @@ public class MarkView: UIView {
         // meant for subclasses to override
     }
 }
+
+// MARK: - Extensions
+
+extension MarkView: Copying { }
